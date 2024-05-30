@@ -1,37 +1,35 @@
 flags:
   - &wiimmfi
     name: "wiimmfi"
-    shorthand: "w"
     description: "Patch game.dol to use Wiimmfi servers"
     type: "bool"
   - &no_ssl
     name: "no-ssl"
-    shorthand: "s"
     description: "Patch game.dol to disable SSL"
     type: "bool"
   - &serverless
     name: "serverless"
-    shorthand: "l"
     description: "Patch game.dol to use serverless mode"
     type: "bool"
   - &no_strap
     name: "no-strap"
-    shorthand: "S"
     description: "Patch game.dol and main.dol to remove wrist strap warning"
     type: "bool"
   - &no_intro
     name: "no-intro"
-    shorthand: "e"
     description: "Patch game.dol to skip EA intro"
     type: "bool"
   - &music
     name: "music"
-    shorthand: "m"
     description: "Patch game.dol to use a custom main menu music (1-17)"
     type: "int"
     default: 1
     min: 1
     max: 17
+  - &panzerschreck
+    name: "panzerschreck"
+    description: "Patch game.dol to add Panzerschreck to the axis weapons list"
+    type: "bool"
 
 files:
   - &game_dol
@@ -87,6 +85,10 @@ patches:
             byte:
               original: 0x40
               replacement: 0x41
+          - address: 0x18EA14
+            bytes:
+              original: "40800008"
+              replacement: "48000018"
         eu: &eu
           - address: 0x11A20
             bytes:
@@ -104,6 +106,10 @@ patches:
             byte:
               original: 0x40
               replacement: 0x41
+          - address: 0x18EA04
+            bytes:
+              original: "40800008"
+              replacement: "48000018"
         us: *eu
         us_beta:
           - address: 0x11A20
@@ -122,6 +128,10 @@ patches:
             byte:
               original: 0x40
               replacement: 0x41
+          - address: 0x18EABC
+            bytes:
+              original: "40800008"
+              replacement: "48000018"
 
   - flag: *music
     changes:
@@ -371,3 +381,34 @@ patches:
             bytes:
               original: "73"
               replacement: "00"
+  - flag: *panzerschreck
+    changes:
+      - file: *game_dol
+        eu_multi:
+          - address: 0x5E7658
+            bytes:
+              original: "496D946C"
+              replacement: "496337DE"
+          - address: 0x5E7673
+            byte:
+              orginal: 0x0B
+              replacement: 0x12
+        eu: &eu
+          - address: 0x5E7618
+            bytes:
+              original: "496D946C"
+              replacement: "496337DE"
+          - address: 0x5E7633
+            byte:
+              orginal: 0x0B
+              replacement: 0x12
+        us: *eu
+        us_beta:
+          - address: 0x5E76F8
+            bytes:
+              original: "496D946C"
+              replacement: "496337DE"
+          - address: 0x5E7713
+            byte:
+              orginal: 0x0B
+              replacement: 0x12
