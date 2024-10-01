@@ -387,7 +387,7 @@ patches:
               replacement: "496337DE"
           - address: 0x5E7673
             byte:
-              orginal: 0x0B
+              original: 0x0B
               replacement: 0x12
         eu: &eu
           - address: 0x5E7618
@@ -396,7 +396,7 @@ patches:
               replacement: "496337DE"
           - address: 0x5E7633
             byte:
-              orginal: 0x0B
+              original: 0x0B
               replacement: 0x12
         us: *eu
         us_beta:
@@ -406,5 +406,5 @@ patches:
               replacement: "496337DE"
           - address: 0x5E7713
             byte:
-              orginal: 0x0B
+              original: 0x0B
               replacement: 0x12
