@@ -191,7 +191,7 @@ func applyIntPatch(patch Patch, value int, restore bool) {
 		}
 
 		for _, change := range *regionChanges {
-			if change.Byte != nil && change.Byte.Replacement == nil {
+			if change.Byte == nil && change.Bytes == nil {
 				replaceByteWithValue(f, change, byte(value))
 			} else {
 				if change.Byte != nil {

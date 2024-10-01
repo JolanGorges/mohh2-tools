@@ -138,18 +138,14 @@ patches:
       - file: *game_dol
         eu_multi:
           - address: 0x626857
-            byte:
         eu: &eu
           - address: 0x626817
-            byte:
         us: *eu
         au: *eu
         jp:
           - address: 0x626C37
-            byte:
         us_beta:
           - address: 0x6268F7
-            byte:
 
   - flag: *no_strap
     changes:
